@@ -8,6 +8,13 @@
 <body>
     <canvas></canvas>
 
+    
+    
+    
+    
+    
+    
+    
     <script>
         const canvas = document.querySelector('canvas')
         const ctx = canvas.getContext('2d')
@@ -15,10 +22,29 @@
         canvas.width =448
         canvas.height=400
 
+    
         let counter = 0
 
+        function drawBall() {}
+        function drawPaddle() {}
+        function drawBricks(){}
+    
+        function collisionDetection(){}
+        function ballMovement(){}
+        function paddleMovement() {}
+
         function draw () {
-            console.log('hola')
+
+            drawBall()
+            drawPaddle()
+            drawBricks()
+            
+    
+    
+            collisionDetection()
+            ballMovement()
+            paddleMovement()
+
             window.requestAnimationFrame(draw)
         }
 
