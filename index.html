@@ -14,6 +14,15 @@
 
         canvas.width =448
         canvas.height=400
+
+        let counter = 0
+
+        function draw () {
+            console.log('hola')
+            window.requestAnimationFrame(draw)
+        }
+
+        draw()
     </script>
 </body>
 </html>
