@@ -46,10 +46,31 @@
         function drawBricks(){}
     
         function collisionDetection(){}
+        
         function ballMovement(){
-            x += dx
-            y += dy
+            //rebotar las pelotas en los laterales
+            if (
+                x + dx > canvas.width -ballRadius ||// la pared derecha
+                x + dx < ballRadius //La pared izquierda
+            ) {
+                dx = -dx
+            }
+
+            //Rebotar en la parte de arriba
+        if (y + dy <ballRadius) {
+            dy = -dy
         }
+
+        if (y + dy > canvas.height - ballRadius) {
+            console.log('Game Over')
+            document.location.reload()
+        }
+            
+        x += dx
+        y += dy
+        }
+
+
         function paddleMovement() {}
 
         function cleanCanvas() {
