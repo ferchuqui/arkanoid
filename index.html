@@ -40,6 +40,9 @@
         let paddleX = (canvas.width - paddelWidth) / 2
         let paddleY = canvas.height - paddleHeight - 10
 
+        let rightPressed = false
+        let leftPressed = false
+
         function drawBall() {
             ctx.beginPath()
             ctx.arc(x, y, ballRadius, 0, Math.PI * 2)
@@ -87,6 +90,29 @@
 
         function cleanCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
+        }
+
+        function initEvents () {
+            document.addEventListener('keydown', keyDownHandler)
+            document.addEventListener('keyup', keyupHandler)
+
+            function keyDownHandler (event) {
+                const { key } = event
+                if (key === 'Right' || key === 'ArrowRight') {
+                    rightPressed = true
+                } else if (key === 'Left' || key === 'ArrowLeft') {
+                    leftPressed = true
+                }
+            }
+
+            function keyUpHandler (event) {
+                cost { key } = event
+                if (key === 'Right' || key === 'ArrowRight') {
+                    rightPressed = false
+                } else if (key === 'Left' || key === 'ArrowLeft') {
+                    leftPressed = false
+                }
+            }
         }
         function draw () {
             cleanCanvas()
