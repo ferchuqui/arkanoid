@@ -43,6 +43,8 @@
         let rightPressed = false
         let leftPressed = false
 
+        const PADDLE_SENSIBILITY = 7
+
         function drawBall() {
             ctx.beginPath()
             ctx.arc(x, y, ballRadius, 0, Math.PI * 2)
@@ -86,7 +88,16 @@
         }
 
 
-        function paddleMovement() {}
+        
+        
+        
+        function paddleMovement() {
+            if (rightPressed) {
+                paddleX += PADDLE_SENSIBILITY
+            } else if (leftPressed) {
+                paddleX -= PADDLE_SENSIBILITY
+            }
+        }
 
         function cleanCanvas() {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -94,27 +105,28 @@
 
         function initEvents () {
             document.addEventListener('keydown', keyDownHandler)
-            document.addEventListener('keyup', keyupHandler)
+            document.addEventListener('keyup', keyUpHandler)
 
-            function keyDownHandler (event) {
-                const { key } = event
-                if (key === 'Right' || key === 'ArrowRight') {
-                    rightPressed = true
-                } else if (key === 'Left' || key === 'ArrowLeft') {
-                    leftPressed = true
-                }
-            }
+            function keyDownHandler(event) {
+      const { key } = event
+      if (key === 'Right' || key === 'ArrowRight' || key.toLowerCase() === 'd') {
+        rightPressed = true
+      } else if (key === 'Left' || key === 'ArrowLeft' || key.toLowerCase() === 'a') {
+        leftPressed = true
+      }
+    }
 
-            function keyUpHandler (event) {
-                cost { key } = event
-                if (key === 'Right' || key === 'ArrowRight') {
-                    rightPressed = false
-                } else if (key === 'Left' || key === 'ArrowLeft') {
-                    leftPressed = false
-                }
-            }
-        }
+    function keyUpHandler(event) {
+      const { key } = event
+      if (key === 'Right' || key === 'ArrowRight' || key.toLowerCase() === 'd') {
+        rightPressed = false
+      } else if (key === 'Left' || key === 'ArrowLeft' || key.toLowerCase() === 'a') {
+        leftPressed = false
+      }
+    }
+  }
         function draw () {
+                console.log({rightPressed, leftPressed})
             cleanCanvas()
             drawBall()
             drawPaddle()
@@ -130,6 +142,7 @@
         }
 
         draw()
+        initEvents()
     </script>
 </body>
 </html>
