@@ -78,7 +78,23 @@
             dy = -dy
         }
 
-        if (y + dy > canvas.height - ballRadius) {
+        
+        
+        
+        
+        const isBallSameXAsPaddle = 
+            x > paddleX &&
+            x < paddleX + paddelWidth
+
+
+            const isBallTouchingPaddle = 
+                y + dy > paddleY
+
+            if (isBallSameXAsPaddle && 
+                isBallTouchingPaddle)
+                dy = -dy
+        else if (
+            y + dy > canvas.height - ballRadius) {
             console.log('Game Over')
             document.location.reload()
         }
@@ -92,9 +108,9 @@
         
         
         function paddleMovement() {
-            if (rightPressed) {
+            if (rightPressed && paddleX <canvas.width - paddelWidth) {
                 paddleX += PADDLE_SENSIBILITY
-            } else if (leftPressed) {
+            } else if (leftPressed && paddleX >0) {
                 paddleX -= PADDLE_SENSIBILITY
             }
         }
